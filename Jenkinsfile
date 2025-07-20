@@ -21,4 +21,12 @@ pipeline {
       }
     }
   }
+  post {
+    success {
+      telegramSend message: "✅ Build #${BUILD_NUMBER} passed for *${JOB_NAME}*"
+    }
+    failure {
+      telegramSend message: "❌ Build #${BUILD_NUMBER} failed for *${JOB_NAME}*"
+    }
+  }
 }
